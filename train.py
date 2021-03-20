@@ -9,12 +9,19 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
+from azureml.core.dataset import Dataset
 
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+url_paths = [
+            'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
+            ]
 
-ds = ### YOUR CODE HERE ###
+ds = Dataset.File.from_files(path=url_paths)
+df = ds.to_pandas_dataframe()
+# list the files referenced by fashion_ds
+#ds.to_path()
 
 x, y = clean_data(ds)
 
