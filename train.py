@@ -14,12 +14,7 @@ from azureml.core.dataset import Dataset
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-url_paths = [
-            'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
-            ]
-
-ds = Dataset.File.from_files(path=url_paths)
-df = ds.to_pandas_dataframe()
+ds = TabularDatasetFactory.from_delimited_files(['https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'])
 # list the files referenced by fashion_ds
 #ds.to_path()
 
