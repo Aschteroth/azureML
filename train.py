@@ -10,6 +10,7 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 from azureml.core.dataset import Dataset
+from azureml.core import model
 
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
@@ -18,13 +19,8 @@ ds = TabularDatasetFactory.from_delimited_files(['https://automlsamplenotebookda
 # list the files referenced by fashion_ds
 #ds.to_path()
 
-x, y = clean_data(ds)
 
-# TODO: Split data into train and test sets.
 
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=66)
-
-run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -52,6 +48,15 @@ def clean_data(data):
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
     return x_df, y_df
+
+
+x, y = clean_data(ds)
+
+# TODO: Split data into train and test sets.
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=66)
+
+run = Run.get_context()
 
 def main():
     # Add arguments to script
