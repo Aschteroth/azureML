@@ -33,8 +33,13 @@ The difference in accuracy was miniscule, with an accuracy of 0.9086 for the Hyp
 
 ## Future work
 
-There are several measures that could be taken to get better results. 
-We might make improvements to the HyperDrive and the AutoML run. One could use the recursive Bayesian Parameter Sampling instead of Random Sampling with the HyperDrive. Bayesian Parameter Sampling ould require more computational resources since we can´t specify an early termination policy, but might get superior results in terms of accuracy. The AutoML could be improved by adjusting the experiment timeout to more than 30 minutes which would allow for more model experimentation. 
-Also, we could work on the dataset, which is biased toward a class. To obtain better results, we could either look for additional data to counter the inherent bias, we could do some feature engineering, or we could try techniques like oversampling of the minority class to get a balanced dataset. 
+There are several measures that could be taken to get better results - either by adjusting the Parameters of our runs or by modifying our input data.
+
+Instead of Random Sampling, we could use the recursive Bayesian Parameter Sampling with the HyperDrive. Bayesian Parameter Sampling would require more computational resources since we can´t specify an early termination policy, but might get superior results in terms of accuracy.
+Another option would be to increase the maximum total runs parameter.
+
+The AutoML could be improved by adjusting the experiment timeout to more than 30 minutes which would allow for more model experimentation. 
+
+Regarding our input data, we ccan see a bias toward a class. To obtain better training results, we could either look for additional sources of data to counter the inherent bias, we could do some feature engineering with the present columns, or we could try techniques like oversampling of the minority class to get a balanced dataset. 
 
 
