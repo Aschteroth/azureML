@@ -21,11 +21,11 @@ We use the Logistic Regression algorithm from Sci-KitLearn in conjunction with H
 - Model Training
 - Model Testing (using the BanditPolicy as early stopping policy for computational efficiency; model performance benchmark: Accuracy)
 - Saving the best-performing Model for later use
-- 
+
 We use a provided script named train.py, to control all steps except for the Hyperparameter sampling, which is controlled by HyperDrive. 
 
 ## AutoML
-AutoML provides a wide variety of algorithms to work with, supporting classification, regression and time-series forecasting problems. The exit criteria is specified in order to stop the training which ensures the resources are not used once the objectives are met. This helps save on costs. Due to the fact that we were utilize a Udacity Virtual Machine for Azure we could only specify a length of 30 minutes for an experiment prior to it timing out. However we were able to iterate through the following model pipelines (with their results):
+AutoML provides a wide variety of algorithms to work with, e.g. classification, regression and time-series forecasting problems. The exit criteria is specified in order to stop the training which to save on computational resources therefore saving cost. Due to the fact that we utilized a VM from Udacity, we could only specify a length of 30 minutes for an experiment prior to it timing out. 
 
 ## Pipeline comparison
 The difference in accuracy was miniscule, with an accuracy of 0.9086 for the HyperDrive and 0.9164 for the AutoML run. The HyperDrive was faster than the AutoML run though.   
@@ -34,7 +34,7 @@ The difference in accuracy was miniscule, with an accuracy of 0.9086 for the Hyp
 ## Future work
 
 There are several measures that could be taken to get better results. 
-We might make improvements to the HyperDrive and the AutoML run. One could use Bayesian Parameter Sampling instead of Random Sampling with the HyperDrive, which would require more computational resources but might get better results in terms of accuracy. The AutoML could be improved by adjusting the experiment timeout to more than 30 minutes which would allow for more model experimentation. 
+We might make improvements to the HyperDrive and the AutoML run. One could use the recursive Bayesian Parameter Sampling instead of Random Sampling with the HyperDrive. Bayesian Parameter Sampling ould require more computational resources since we can´t specify an early termination policy, but might get superior results in terms of accuracy. The AutoML could be improved by adjusting the experiment timeout to more than 30 minutes which would allow for more model experimentation. 
 Also, we could work on the dataset, which is biased toward a class. To obtain better results, we could either look for additional data to counter the inherent bias, we could do some feature engineering, or we could try techniques like oversampling of the minority class to get a balanced dataset. 
 
 
