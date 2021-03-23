@@ -1,15 +1,15 @@
 # Optimizing an ML Pipeline in Azure
 
 ## Overview
-This project is part of the Udacity Azure ML Nanodegree.
-In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
-This model is then compared to an Azure AutoML run.
+
+In this project, we will build and optimize an AzureML pipeline using the Python SDK and a provided Scikit-learn model on a dataset from the internet. 
+By implementing and running a Hyperdrive Pipeline and an AutoML run on the same data, we seek to obtain the best performing model in terms of accuracy. 
 
 ## Summary
-The data used in this project is related to direct marketing campaigns of a european Bank. Using a classification model, we want to predict if a client will subscribe to a term.
+The data used in this project is related to direct marketing campaigns of a banking institution, consisting of 20 feature-columns with personal data for 32950 observations and a target column "y" with the outcome of the marketing campaign. Using a classification model, we want to predict if a client will subscribe to a term, based on the feature columns.
 
-**In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
-By comparing the results of a HyperDrive and an AutoML Pipeline run, we identified the best performing model for our dataset to be a VotingEnsemble with an accuracy of .9164
+By running and comparing the results of a HyperDrive and an AutoML Pipeline run, we identified the best performing model for our dataset to be a VotingEnsemble from the AutoML run, with an accuracy of 0.9164. 
+
 
 ## Scikit-learn Pipeline
 We use the Logistic Regression algorithm from Sci-KitLearn in conjunction with HyperDrive for hyperparameter tuning. The pipeline consists of the following steps:
@@ -28,12 +28,13 @@ We use a provided script named train.py, to control all steps except for the Hyp
 AutoML provides a wide variety of algorithms to work with, supporting classification, regression and time-series forecasting problems. The exit criteria is specified in order to stop the training which ensures the resources are not used once the objectives are met. This helps save on costs. Due to the fact that we were utilize a Udacity Virtual Machine for Azure we could only specify a length of 30 minutes for an experiment prior to it timing out. However we were able to iterate through the following model pipelines (with their results):
 
 ## Pipeline comparison
-The difference in accuracy was miniscule, with an accuracy of 0.9086 for the Hyperdrive and 0.9164 for the AutoML run 
+The difference in accuracy was miniscule, with an accuracy of 0.9086 for the HyperDrive and 0.9164 for the AutoML run. The HyperDrive was faster than the AutoML run though.   
 
 
 ## Future work
-**What are some areas of improvement for future experiments? Why might these improvements help the model?**
-Our dataset is biased toward a class. To obtain better results, we could either look for more additional data to counter the inherent bias, or do some feature engineering. 
-## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+
+There are several measures that could be taken to get better results. 
+We might make improvements to the HyperDrive and the AutoML run. One could use Bayesian Parameter Sampling instead of Random Sampling with the HyperDrive, which would require more computational resources but might get better results in terms of accuracy. The AutoML could be improved by adjusting the experiment timeout to more than 30 minutes which would allow for more model experimentation. 
+Also, we could work on the dataset, which is biased toward a class. To obtain better results, we could either look for additional data to counter the inherent bias, we could do some feature engineering, or we could try techniques like oversampling of the minority class to get a balanced dataset. 
+
+
